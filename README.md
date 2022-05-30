@@ -1,6 +1,16 @@
 <h1 align="center">Dashboard for Smart Meter Data in Orbit-DB</h1>
 
 
+## Background
+
+This is a dashboard and API for BlockPro - the Blockchain based proof of existence for renewable energy.
+
+The dashboard displays all meter data that was stored in the Doichain and backed up in the IPFS. Therefore, orbit-db is used, where the data can be queried by date, id, meter_id etc. 
+
+The API is an interface for the BlockPro market place. At the market place electricity consumers and producers come together. An electricity transaction is sent to BlockPro via Rest API and stored in the Doichain Blockchain. Data from the offer like meter_id, date and amount of electricity ordered are also stored in OrbitDB. 
+
+If the production and consumption of the ordered electricity has taken place, a matching between meter data and the order is sent back to the market place.
+
 ## Available Scripts
 
 In the project directory, you can run:
