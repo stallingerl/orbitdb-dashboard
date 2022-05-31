@@ -3,7 +3,6 @@ const path = require('path');
 const express = require("express");
 const PORT = process.env.PORT || 3001;
 var cors = require('cors')
-
 const bcrypt = require("bcryptjs")
 const IPFS = require('ipfs');
 const OrbitDB = require('orbit-db');
@@ -27,15 +26,10 @@ async function main() {
     app.use(cors())
   }
 
-  app.get("/api", (req, res) => {
-    res.json({ message: "Hello from server!" });
-  });
+  // Have Node serve the files for our built React app
+  app.use(express.static(path.resolve(__dirname, '../client/build')));
 
-  app.get("/test", (req, res) => {
-    res.json({ message: "TEST from server!" });
-  });
-
-  app.get("/mfa", async (req, res) => {
+  app.get("/mfa", async (req, res, next) => {
 
     // Our register logic starts here
     try {
@@ -68,14 +62,11 @@ async function main() {
 
       // return new user
       res.json({ message: myMfas });
-
     } catch (err) {
       console.log(err);
+      res.status(404).json({message: "404 File not found"})
     }
   });
-
-  // Have Node serve the files for our built React app
-  app.use(express.static(path.resolve(__dirname, '../client/build')));
 
   app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
@@ -85,8 +76,6 @@ async function main() {
   app.get('*', (req, res) => {
     res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
   });
-
-
 }
 
 main()
