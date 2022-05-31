@@ -8,15 +8,15 @@ function App() {
   try {
 
     React.useEffect(() => {
-      fetch("http://localhost:3001/api", {
+      fetch("http://localhost:3001/mfa", {
         headers: {
           'Accept': 'application/json',
           'Access-Control-Allow-Origin': '*'
         }
       })
         .then((res) => res.json())
-        .then((data) => setData(data.message));
-    }, []);
+        .then((data) => setData(data.message))
+        , []});
 
     return (
       <div className="App">
