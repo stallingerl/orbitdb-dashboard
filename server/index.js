@@ -30,7 +30,7 @@ async function main() {
   app.get("/mfa", async (req, res) => {
 
     // Set variables
-    const amount = 2; // Amout of data to put
+    const amount = 3; // Amout of data to put
     const timestamp = new Date().getTime(); // Timestamp (Only set once so we don't affect performance too much)
     const timeStart = performance.now(); // Start time of the data loop
 
@@ -38,22 +38,20 @@ async function main() {
     console.log('This is middleware', req.originalUrl);
 
     // Loop for our amount of data to put
-    // for (let i = 0; i < amount; i++) {
-    // Pseudo ID from timestamp + index should be enough for testing
-    let pseudoId = timestamp;
+    for (let i = 0; i < amount; i++) {
+      // Pseudo ID from timestamp + index should be enough for testing
+      let pseudoId = new Date().getTime();
 
-    // Random KWh values between 1.000 and 100.000
-    let kwhValue = Math.floor(Math.random() * 100000) + 1000;
+      // Random KWh values between 1.000 and 100.000
+      let kwhValue = Math.floor(Math.random() * 100000) + 1000;
+      await docstore.put({ _id: pseudoId, timestamp: timestamp, energy: kwhValue, pin: true })
+    }
 
-    // Put line to DB
-    await docstore.put({ _id: pseudoId, timestamp: timestamp, energy: kwhValue, pin: true })
-      .then(() => docstore.query((e) => e._id > 5))
-      .then((myMfas) => res.json(myMfas[0]))
-      .then(() => console.log("sent response"))
-      .catch(err => {
-        console.log(err);
-        res.sendStatus(501);
-      });
+    var myMfas = await docstore.query((e) => e._id > 5)
+    console.log("My Mfas", myMfas)
+    res.json(myMfas)
+    console.log("sent response")
+
 
   });
 

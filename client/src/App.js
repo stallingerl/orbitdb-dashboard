@@ -1,20 +1,20 @@
 // App.js
 import React, { useState, useEffect } from "react";
-
-import Table  from "./Table";
+import List from "./List"
 import "./App.css";
 
 
 function App() {
 
-  const [meterData, setData] = useState(null);
+  const initialList = [];
+  const [list, setList] = React.useState(initialList);
 
   useEffect(() => {
     (async () => {
       fetch("/mfa")
         .then((res) => res.json())
         .then((json) => {
-          setData(json);
+          setList(json);
           console.log("result ", json)
         })
         .catch(err => {
@@ -23,18 +23,16 @@ function App() {
     })();
   }, []);
 
-
-  if (!meterData) {
-    return <div className="App">Table is Loading ...</div>
+  if (list.length === 0) {
+    return <div>Loading List of Meter Data</div>
   } else {
     return (
       <div>
-        <Table
-          data={meterData}
-          col_labels={['Id', 'Timestamp', 'Energy', 'Pinned']} />
+        <h1>My saved Meter Data</h1>
+        <List>{list}</List>
       </div>
-    );
+    )
   }
-}
+};
 
 export default App;
