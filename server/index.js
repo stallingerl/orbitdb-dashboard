@@ -31,8 +31,6 @@ async function main() {
 
     // Set variables
     const amount = 3; // Amout of data to put
-    const timestamp = new Date().getTime(); // Timestamp (Only set once so we don't affect performance too much)
-    const timeStart = performance.now(); // Start time of the data loop
 
     console.log("Starting to put data into Docstore DB...");
     console.log('This is middleware', req.originalUrl);
@@ -41,6 +39,8 @@ async function main() {
     for (let i = 0; i < amount; i++) {
       // Pseudo ID from timestamp + index should be enough for testing
       let pseudoId = new Date().getTime();
+
+      let timestamp = new Date().getTime();
 
       // Random KWh values between 1.000 and 100.000
       let kwhValue = Math.floor(Math.random() * 100000) + 1000;

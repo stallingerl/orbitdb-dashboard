@@ -6,6 +6,11 @@ const List = (props) => {
     let list = null;
     list = props.children
 
+    function convertTimestamp(timestamp){
+        let date = new Date(timestamp);
+        return date.toString();
+    }
+
     return (
         <table class="table">
             <thead>
@@ -20,7 +25,7 @@ const List = (props) => {
                 {list.map(item => (
                     <tr>
                         <td>{item._id}</td>
-                        <td>{item.timestamp}</td>
+                        <td>{convertTimestamp(item.timestamp)}</td>
                         <td>{item.energy}</td>
                         <td>{item.pin ? "true" : "false"}</td>
                     </tr>

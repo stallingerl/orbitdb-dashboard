@@ -24,7 +24,7 @@ function App() {
   }, []);
 
   if (list.length === 0) {
-    return <div>Loading List of Meter Data</div>
+    return <div>Loading Table of Meter Data</div>
   } else {
     return (
       <div>
