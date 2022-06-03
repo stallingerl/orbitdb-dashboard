@@ -1,33 +1,39 @@
+// App.js
+import React, { useState, useEffect } from "react";
 
-import React from "react";
-import logo from "./logo.svg";
+import Table  from "./Table";
 import "./App.css";
 
+
 function App() {
-  const [data, setData] = React.useState(null);
-  try {
 
-    React.useEffect(() => {
-      fetch("http://localhost:3001/mfa", {
-        headers: {
-          'Accept': 'application/json',
-          'Access-Control-Allow-Origin': '*'
-        }
-      })
+  const [meterData, setData] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      fetch("/mfa")
         .then((res) => res.json())
-        .then((data) => setData(data.message))
-    }, []);
+        .then((json) => {
+          setData(json);
+          console.log("result ", json)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    })();
+  }, []);
 
+
+  if (!meterData) {
+    return <div className="App">Table is Loading ...</div>
+  } else {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{!data ? "Loading..." : data}</p>
-        </header>
+      <div>
+        <Table
+          data={meterData}
+          col_labels={['Id', 'Timestamp', 'Energy', 'Pinned']} />
       </div>
     );
-  } catch (error) {
-    console.log(error)
   }
 }
 

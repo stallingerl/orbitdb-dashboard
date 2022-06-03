@@ -21,17 +21,25 @@
   },
   "homepage": "https://github.com/stallingerl/orbitdb-dashboard#readme",
   "dependencies": {
+    "@table-library/react-table-library": "^3.1.5",
+    "axios": "^0.27.2",
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "http-proxy-middleware": "^2.0.6",
-    "bcryptjs": "^2.4.3",
-    "dotenv": "^16.0.1",
     "ipfs": "^0.62.3",
-    "orbit-db": "^0.28.6"
+    "orbit-db": "^0.28.6",
+    "react": "^18.1.0",
+    "react-table": "^7.8.0",
+    "reactstrap": "^9.0.3",
+    "serve-favicon": "^2.5.0",
+    "styled-components": "^5.3.5"
   },
   "devDependencies": {
     "nodemon": "^2.0.16"
   },
+  "proxy": "http://localhost:3001",
   "engines": {
     "node": "16.14.0"
   }
