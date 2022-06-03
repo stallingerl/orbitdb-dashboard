@@ -1,5 +1,14 @@
 <h1 align="center">Dashboard for Smart Meter Data in Orbit-DB</h1>
 
+<p align="center">
+  <img 
+  src="./images/OrbitDB.png"
+  raw=true 
+  style="height:200px"
+  />
+</p>
+
+
 
 ## Background
 
@@ -11,25 +20,18 @@ The API is an interface for the BlockPro market place. At the market place elect
 
 If the production and consumption of the ordered electricity has taken place, a matching between meter data and the order is sent back to the market place.
 
-## Available Scripts
+## Deployed at
 
-In the project directory, you can run:
+<a href="https://orbitdb-dashboard.herokuapp.com">OrbitDB Dashboard</a>
 
-### `npm start`
+## Get Started
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. git clone this repo 
+2. run ```npm i``` in root directory
+3. run ```npm start``` 
+4. run in different terminal ```npm i``` in root/client
+5. in same terminal run ```npm start``` 
+6. Or run ```npm run build``` to create production build
 
 ## Contributing
 
