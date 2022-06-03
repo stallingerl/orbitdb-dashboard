@@ -11,7 +11,7 @@ function App() {
 
   useEffect(() => {
     (async () => {
-      fetch("/mfa")
+      fetch("/table")
         .then((res) => res.json())
         .then((json) => {
           setList(json);
@@ -28,7 +28,8 @@ function App() {
   } else {
     return (
       <div>
-        <h1>My saved Meter Data</h1>
+        <h1>Block Pro </h1>
+        <h2>My Saved Meter Data</h2>
         <List>{list}</List>
       </div>
     )

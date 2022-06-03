@@ -22,12 +22,9 @@ async function main() {
   const docstore = await orbitDb.docstore('docstoreDB');
   console.log("Successfully created docstore");
 
-  // Have Node serve the files for our built React app
-  app.get(express.static(path.resolve(__dirname, '../client/build')));
-
   //app.get(favicon(path.join(__dirname, '../client/public', 'favicon.ico')))
 
-  app.get("/mfa", async (req, res) => {
+  app.get("/table", async (req, res) => {
 
     // Set variables
     const amount = 3; // Amout of data to put
@@ -54,6 +51,9 @@ async function main() {
 
 
   });
+
+  // Have Node serve the files for our built React app
+  app.get(express.static(path.resolve(__dirname, '../client/build')));
 
   app.listen(PORT, () => {
     console.log(`Server listening on ${PORT}`);
