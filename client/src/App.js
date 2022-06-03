@@ -1,5 +1,5 @@
 // App.js
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import List from "./List"
 import "./App.css";
 
@@ -24,10 +24,16 @@ function App() {
   }, []);
 
   if (list.length === 0) {
-    return <div>Loading Table of Meter Data</div>
+    return (
+      <div className="App">
+        <h1>Block Pro </h1>
+        <h2>My Saved Meter Data</h2>
+        <p>Loading Table of Meter Data</p>
+      </div>
+    )
   } else {
     return (
-      <div>
+      <div className="App">
         <h1>Block Pro </h1>
         <h2>My Saved Meter Data</h2>
         <List>{list}</List>

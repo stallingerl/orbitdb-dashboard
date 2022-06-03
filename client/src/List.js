@@ -1,7 +1,5 @@
 import React from 'react';
 
-const initialList = [];
-
 const List = (props) => {
     let list = null;
     list = props.children

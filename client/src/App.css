@@ -68,12 +68,17 @@ input {
 h1 {
   padding: 60px;
   text-align: center;
-  background: #1abc9c;
+  background: #9a79b8;
   color: white;
   font-size: 30px;
 }
 
 h2 {
+  padding: 5 px;
+  text-align: center;
+}
+
+p {
   padding: 5 px;
   text-align: center;
 }
